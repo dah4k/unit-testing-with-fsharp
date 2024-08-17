@@ -16,8 +16,9 @@ let ``Sequences of Ones and Evens returns Ones`` () =
     let actual = MyMath.squaresOfOdds [ 2; 1; 4; 1; 6; 1; 8; 1; 10 ]
     Assert.Equal<Collections.Generic.IEnumerable<int>>(expected, actual)
 
+[<Theory>]
+[<InlineData([1; 2; 3; 4; 5; 6; 7; 8; 9; 10],  [1; 9; 25; 49; 81])>]
 [<Fact>]
-let ``SquaresOfOdds works`` () =
-    let expected = [ 1; 9; 25; 49; 81 ]
-    let actual = MyMath.squaresOfOdds [ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 ]
-    Assert.Equal(expected, actual)
+let ``SquaresOfOdds works`` (input : list<int>, expected : list<int>) =
+    let actual = MyMath.squaresOfOdds input
+    Assert.Equal<Collections.Generic.IEnumerable<int>>(expected, actual)
